@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Pa0 from './components/Pa0.js';
+import Navbar from './components/Navbar.js';
 
+
+const data = [
+  {
+    name: 'A', freq: 2400,fre2 :2222
+  },
+  {
+    name: 'B', freq: 5000,fre2 : 2300
+  }
+];
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <div>
+  <Navbar/>
+  <Pa0/>
+  </div>
+  ,document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
