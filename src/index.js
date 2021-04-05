@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Pa0 from './components/Pa0.js';
 import Navbar from './components/Navbar.js';
+import KeyGenerator from './components/KeyGenerator.js';
+import ImageEncrypt from './components/ImageEncrypt.js';
 
 
 const data = [
@@ -16,7 +18,7 @@ const data = [
 ReactDOM.render(
   <div>
   <Navbar/>
-  <Pa0/>
+  <ImageEncrypt/>
   </div>
   ,document.getElementById('root')
 );
