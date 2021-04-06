@@ -10,19 +10,36 @@ class ImageEncrypt extends React.Component{
       pbg : null,
       enc_img : null,
       fileDownloadUrl : "",
-
+      keyfile : "",
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleEncrypt = this.handleEncrypt.bind(this)
     this.changeN = this.changeN.bind(this)
     this.changeG = this.changeG.bind(this)
     this.downloadFile = this.downloadFile.bind(this)
+    this.handleKeys = this.handleKeys.bind(this)
   }
   handleChange(event){
-
     this.setState({
       furl : window.URL.createObjectURL(event.target.files[0]),
       file : event.target.files[0]
+    })
+  }
+  handleKeys(event){
+    this.setState({
+      keyfile : event.target.files[0]
+    },() =>{
+      const reader = new FileReader()
+        reader.onload = async (e) => {
+          const text = (e.target.result)
+          var res = JSON.parse(text)
+          this.setState({
+            pbn : res.pbn,
+            pbg : res.pbg
+          })
+      };
+      reader.readAsText(event.target.files[0])
+
     })
   }
   handleEncrypt(event){
@@ -47,13 +64,13 @@ class ImageEncrypt extends React.Component{
       })
   }
   downloadFile(){
-    console.log(this.state.enc_img)
-    const blob = new Blob([JSON.stringify(this.state.enc_img)]);                   // Step 3
-    const fileDownloadUrl = URL.createObjectURL(blob); // Step 4
-    this.setState ({fileDownloadUrl: fileDownloadUrl}, // Step 5
+    const blob = new Blob([JSON.stringify(this.state.enc_img)]);
+    // console.log(JSON.parse(JSON.stringify(this.state.enc_img)));
+    const fileDownloadUrl = URL.createObjectURL(blob);
+    this.setState ({fileDownloadUrl: fileDownloadUrl},
       () => {
-        this.dofileDownload.click();                   // Step 6
-        URL.revokeObjectURL(fileDownloadUrl);          // Step 7
+        this.dofileDownload.click();
+        URL.revokeObjectURL(fileDownloadUrl);
         this.setState({fileDownloadUrl: ""})
     })
   }
@@ -81,9 +98,11 @@ class ImageEncrypt extends React.Component{
         </div>
         <label for="files" class="example_b">Select Image</label>
         <input id="files" className="hide-button" type="file" onChange={this.handleChange}/>
+        <label for="files2" class="example_b">Upload Keys</label>
+        <input id="files2" className="hide-button" type="file" onChange={this.handleKeys}/>
         <img src={this.state.furl}/>
-        <input className="input-box" value = {this.state.bits} type = "number" placeholder = "Public Key N" onChange={this.changeN}/>
-        <input className="input-box" value = {this.state.bits} type = "number" placeholder = "Public Key G" onChange={this.changeG}/>
+        <input className="input-box" value = {this.state.pbn} type = "number" placeholder = "Public Key N" onChange={this.changeN}/>
+        <input className="input-box slight-left" value = {this.state.pbg} type = "number" placeholder = "Public Key G" onChange={this.changeG}/>
         <br/>
         <br/>
         <input className="input-button example_b" id="clickMe" type="button" value="Encrypt Image" onClick={this.handleEncrypt} />

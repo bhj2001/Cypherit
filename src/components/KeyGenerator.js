@@ -8,10 +8,12 @@ class KeyGenerator extends React.Component{
       pbg : "",
       prl : "",
       prmu : "",
-      bits : 10
+      bits : 10,
+      fileDownloadUrl : null,
     }
     this.handleChange = this.handleChange.bind(this)
     this.changeBits = this.changeBits.bind(this)
+    this.downloadFile = this.downloadFile.bind(this)
   }
   handleChange(event){
     const requestOptions = {
@@ -36,6 +38,17 @@ class KeyGenerator extends React.Component{
       })
 
   }
+
+  downloadFile(){
+    const blob = new Blob([JSON.stringify(this.state)]);
+    const fileDownloadUrl = URL.createObjectURL(blob);
+    this.setState ({fileDownloadUrl: fileDownloadUrl},
+      () => {
+        this.dofileDownload.click();
+        URL.revokeObjectURL(fileDownloadUrl);
+        this.setState({fileDownloadUrl: ""})
+    })
+  }
   render(){
     return (
       <div className="right-view">
@@ -59,6 +72,12 @@ class KeyGenerator extends React.Component{
           </div>
         </div>
         <input className="input-button example_b" id="clickMe" type="button" value="Generate Keys" onClick={this.handleChange} />
+        <input className="input-button example_b slight-left slight-left" id="clickMe" type="button" value="Download Keys" onClick={this.downloadFile} />
+        <a style={{display: "none"}}
+         download={"temp"}
+         href={this.state.fileDownloadUrl}
+         ref={e=>this.dofileDownload = e}
+         >download it</a>
       </div>
     )
   }

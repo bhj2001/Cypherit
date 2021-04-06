@@ -5,7 +5,8 @@ import Pa0 from './components/Pa0.js';
 import Navbar from './components/Navbar.js';
 import KeyGenerator from './components/KeyGenerator.js';
 import ImageEncrypt from './components/ImageEncrypt.js';
-
+import ImageOp from './components/ImageOp.js';
+import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
 
 const data = [
   {
@@ -16,9 +17,17 @@ const data = [
   }
 ];
 ReactDOM.render(
-  <div>
-  <Navbar/>
-  <ImageEncrypt/>
-  </div>
+  <Router>
+      <div>
+        <Navbar/>
+          <Switch>
+
+            <Route path="/encrypt-image" exact component={ImageEncrypt}/>
+            <Route path="/encrypt-image-operation" exact component={ImageOp}/>
+            <Route path="/key-generator" exact component={KeyGenerator}/>
+
+          </Switch>
+      </div>
+    </Router>
   ,document.getElementById('root')
 );
