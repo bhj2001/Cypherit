@@ -14,7 +14,7 @@ class ImageOp extends React.Component{
       data : null,
       fileDownloadUrl : "",
       brightness : 0,
-      neg : 0,
+      neg : 1,
       blur : 0,
     }
     this.handleChange = this.handleChange.bind(this)
