@@ -53,7 +53,7 @@ class ImageEncrypt extends React.Component{
       formData.append("pbn",this.state.pbn);
       formData.append("pbg",this.state.pbg);
 
-      axios.post("http://127.0.0.1:8000/encrypt-image", formData, { // receive two parameter endpoint url ,form data
+      axios.post("http://ragnar177.pythonanywhere.com/encrypt-image", formData, { // receive two parameter endpoint url ,form data
       })
       .then((response) => {
         this.setState({

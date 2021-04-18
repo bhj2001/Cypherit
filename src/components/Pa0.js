@@ -59,7 +59,7 @@ class Pa0 extends React.Component {
             'shift':this.state.shift
         })
     };
-    fetch("http://127.0.0.1:8000/pa0",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("http://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         cipher : data.cipher,
         graphdata : data.graphdata,
@@ -77,7 +77,7 @@ class Pa0 extends React.Component {
               'shift':24 - this.state.shift
           })
       };
-      fetch("http://127.0.0.1:8000/pa0",requestOptions).then(response=>response.json()).then(data =>{
+      fetch("http://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
         this.setState({
           plainText : data.cipher
         })
@@ -94,7 +94,7 @@ class Pa0 extends React.Component {
         </div>
         <div>
           <ul className="text-input-box">
-            
+
             <li className="input-item">
               <div>
                 <p className="input-box-heading">Plain Text</p>

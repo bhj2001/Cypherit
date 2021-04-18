@@ -52,7 +52,7 @@ class Pa1 extends React.Component {
 
             })
         };
-        fetch("http://127.0.0.1:8000/des",requestOptions).then(response=>response.json()).then(data =>{
+        fetch("http://ragnar177.pythonanywhere.com/des",requestOptions).then(response=>response.json()).then(data =>{
           console.log(data)
           this.setState({
             cipher : data.txt
