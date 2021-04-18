@@ -53,13 +53,14 @@ class Pa0 extends React.Component {
   getCipherText(){
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json',
+      "mode" : "no-cors" },
         body: JSON.stringify({
             plainText:this.state.plainText,
             'shift':this.state.shift
         })
     };
-    fetch("http://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         cipher : data.cipher,
         graphdata : data.graphdata,
@@ -77,7 +78,7 @@ class Pa0 extends React.Component {
               'shift':24 - this.state.shift
           })
       };
-      fetch("http://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
+      fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
         this.setState({
           plainText : data.cipher
         })
