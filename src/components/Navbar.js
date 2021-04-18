@@ -5,6 +5,16 @@ function Navbar()
   return (
     <nav className = "navbar">
       <ul className = "navbar-nav">
+      <Link to='/practical-assignment-0' style={{ textDecoration: 'none' }}>
+        <li className="nav-link">
+          <p className = "font-icon"> PA0 </p>
+        </li>
+      </Link>
+      <Link to='/practical-assignment-1' style={{ textDecoration: 'none' }}>
+        <li className="nav-link">
+          <p className = "font-icon"> PA1 </p>
+        </li>
+      </Link>
         <Link to='/key-generator'>
           <li className="nav-link">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink" x="0px" y="0px"

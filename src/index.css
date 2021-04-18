@@ -13,6 +13,9 @@
   --border-color : #ced4da;
   --matte-black : #161a1d;
   --transition-speed: 600ms;
+  --button-color : #48bfe3;
+
+  --heading-bar : #161a1d;
 }
 body{
   margin:0;
@@ -53,7 +56,7 @@ a{
 }
 .inputBox{
   width : 40rem;
-  height : 20rem;
+  height : 15rem;
   text-decoration-style: none;
   /* background: linear-gradient(21deg, #10abff, #1beabd); */
   border-color: var(--matte-black);
@@ -71,12 +74,9 @@ a{
     border-width: 0.2rem;
 }
 
-.cipher-input{
-  margin-left : 8rem;
-}
 .right-view{
   margin-left : 8rem;
-  margin-top : 2rem;
+  margin-top : 1rem;
 }
 .inner-shadow {
    -moz-box-shadow:    inset 0 0 10px #000000;
@@ -92,13 +92,18 @@ a{
 .page-heading{
   font-size: 1.5rem;
   text-align: center;
-  padding : 0.7rem;
+  padding : 0.8rem;
+  padding-top : 10rem;
+  margin-top : -10rem;
+  font-weight : 600;
+  text-transform: uppercase;
 }
 .heading-bar{
-  background: var(--border-color);
-  border-radius: 10rem;
+  background: var(--heading-bar);
+  border-radius: 3rem;
   width: 89rem;
   align-items: center;
+  color : #ffffff;
 }
 
 .box-heading{
@@ -145,7 +150,7 @@ a{
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #f77f00;
+  background:var(--button-color) ;
   padding: 20px;
   border-radius: 100px;
   display: inline-block;
@@ -190,7 +195,7 @@ a{
 }
 
 .nav-link svg:hover{
-    fill : #f77f00
+    fill : var(--button-color)
 }
 
 .controls{
@@ -200,5 +205,58 @@ a{
   display: inline-block;
   margin-left : 2rem;
   list-style-type: none;
-  
+
+}
+
+.font-icon{
+  font-weight: 900;
+  text-decoration-style: none;
+  text-decoration: none;
+}
+
+.font-icon:hover{
+  color: var(--button-color);
+}
+.text-input-box{
+  list-style: none;
+}
+
+.input-item{
+  display: inline-block;
+  margin-right:3rem;
+}
+
+.input-box-heading{
+  font-size: 1.2rem;
+  color : var(--matte-block);
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: var(--matte-black);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: #023047;
 }

@@ -89,12 +89,26 @@ class Pa0 extends React.Component {
   render () {
     return (
       <div className = "right-view">
-        <form>
-        <textarea className = "inputBox" value = {this.state.plainText} type = "text" placeholder = "Plain Text" onChange={this.handleChange}/>
-        {/*<input value = {this.state.shift} type = "text" placeholder = "Shift" onChange={this.handleShift}/>*/}
-        <textarea className = "inputBox cipher-input" value = {this.state.cipher} type = "text" placeholder = "Cipher Text" onChange={this.handleChangedCipher}/>
-        {/*<h1>{this.state.cipher}</h1>*/}
-        </form>
+        <div className="heading-bar">
+          <p className="page-heading">Practical Assignment - 0</p>
+        </div>
+        <div>
+          <ul className="text-input-box">
+            
+            <li className="input-item">
+              <div>
+                <p className="input-box-heading">Plain Text</p>
+                <textarea className = "inputBox" value = {this.state.plainText} type = "text" placeholder = "Plain Text" onChange={this.handleChange}/>
+              </div>
+            </li>
+            <li className="input-item">
+              <div style={{display:'inline-block'}}>
+                <p className="input-box-heading">Cipher Text</p>
+                <textarea className = "inputBox" value = {this.state.cipher} type = "text" placeholder = "Cipher Text" onChange={this.handleChangedCipher}/>
+              </div>
+            </li>
+          </ul>
+        </div>
         <div className = "graph-style">
           <Graphapp  data = {this.state.graphdata}/>
         </div>
