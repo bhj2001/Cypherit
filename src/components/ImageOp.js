@@ -101,7 +101,7 @@ class ImageOp extends React.Component{
     this.setState({
       brightness : event.target.value
     })
-    axios.post("http://ragnar177.pythonanywhere.com/inc-brightness", formData, { // receive two parameter endpoint url ,form data
+    axios.post("https://ragnar177.pythonanywhere.com/inc-brightness", formData, { // receive two parameter endpoint url ,form data
     })
     .then((response) => {
       var s = `data:image/gif;base64,${response.data.b64}`
@@ -123,7 +123,7 @@ class ImageOp extends React.Component{
     this.setState({
       neg : (this.state.neg+1)%2
     })
-    axios.post("http://ragnar177.pythonanywhere.com/image-negation", formData, { // receive two parameter endpoint url ,form data
+    axios.post("https://ragnar177.pythonanywhere.com/image-negation", formData, { // receive two parameter endpoint url ,form data
     })
     .then((response) => {
       var s = `data:image/gif;base64,${response.data.b64}`
@@ -145,7 +145,7 @@ class ImageOp extends React.Component{
     this.setState({
       blur : event.target.value
     })
-    axios.post("http://ragnar177.pythonanywhere.com/image-blur", formData, { // receive two parameter endpoint url ,form data
+    axios.post("https://ragnar177.pythonanywhere.com/image-blur", formData, { // receive two parameter endpoint url ,form data
     })
     .then((response) => {
       var s = `data:image/gif;base64,${response.data.b64}`
@@ -165,7 +165,7 @@ class ImageOp extends React.Component{
     this.setState({
       blur : event.target.value
     })
-    axios.post("http://ragnar177.pythonanywhere.com/image-edge-detect", formData, { // receive two parameter endpoint url ,form data
+    axios.post("https://ragnar177.pythonanywhere.com/image-edge-detect", formData, { // receive two parameter endpoint url ,form data
     })
     .then((response) => {
       var s = `data:image/gif;base64,${response.data.b64}`
@@ -185,7 +185,7 @@ class ImageOp extends React.Component{
       formData.append("prl",this.state.prl);
       formData.append("prmu",this.state.prmu);
       formData.append("brightness",this.state.brightness)
-      axios.post("http://ragnar177.pythonanywhere.com/decrypt-image", formData, { // receive two parameter endpoint url ,form data
+      axios.post("https://ragnar177.pythonanywhere.com/decrypt-image", formData, { // receive two parameter endpoint url ,form data
       })
       .then((response) => {
         var s = `data:image/gif;base64,${response.data.b64}`

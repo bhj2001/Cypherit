@@ -23,7 +23,7 @@ class KeyGenerator extends React.Component{
             'bits':this.state.bits
         })
     };
-    fetch("http://ragnar177.pythonanywhere.com/generate-keys",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("https://ragnar177.pythonanywhere.com/generate-keys",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         pbn : data.pbn,
         pbg : data.pbg,
