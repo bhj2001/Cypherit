@@ -54,7 +54,7 @@ class Pa0 extends React.Component {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json',
-      "mode" : "no-cors" },
+    "Access-Control-Allow-Origin": "*" },
         body: JSON.stringify({
             plainText:this.state.plainText,
             'shift':this.state.shift
