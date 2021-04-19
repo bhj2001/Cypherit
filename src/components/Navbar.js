@@ -32,7 +32,7 @@ function Navbar()
         </svg>
       </li>
 
-      <Link to='/Cypherit/practical-assignment-0' style={{ textDecoration: 'none' }}>
+      <Link to='/practical-assignment-0' style={{ textDecoration: 'none' }}>
         <li className="nav-link">
           <p className = "font-icon"> PA0 </p>
         </li>
