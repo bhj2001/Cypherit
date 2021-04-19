@@ -9,14 +9,11 @@ class Pa0 extends React.Component {
     this.state = {
       cipher: "",
       graphdata : "",
-      alpha : "",
       plainText : "",
-      shift : 25,
       lastwritten : 0
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleChangedCipher = this.handleChangedCipher.bind(this)
-    this.handleShift = this.handleShift.bind(this);
     this.getPlainText = this.getPlainText.bind(this);
     this.getCipherText = this.getCipherText.bind(this);
   }
@@ -28,18 +25,6 @@ class Pa0 extends React.Component {
     },()=>{this.getCipherText()})
   }
 
-  handleShift(event)
-  {
-    this.setState({
-      shift : event.target.value
-    },()=>{
-      if(!this.state.lastwritten)
-        this.getCipherText();
-      else
-        this.getPlainText();
-    })
-
-  }
 
   handleChangedCipher(event){
     this.setState({
@@ -53,11 +38,9 @@ class Pa0 extends React.Component {
   getCipherText(){
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json',
-    "Access-Control-Allow-Origin": "*" },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            plainText:this.state.plainText,
-            'shift':this.state.shift
+            plainText:this.state.plainText
         })
     };
     fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
@@ -74,8 +57,7 @@ class Pa0 extends React.Component {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-              plainText:this.state.cipher,
-              'shift':24 - this.state.shift
+              plainText:this.state.cipher
           })
       };
       fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
