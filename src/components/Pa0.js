@@ -57,13 +57,14 @@ class Pa0 extends React.Component {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-              plainText:this.state.cipher,
-              graphdata : data.graphdata
+              plainText:this.state.cipher
+
           })
       };
       fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
         this.setState({
-          plainText : data.cipher
+          plainText : data.cipher,
+          graphdata : data.graphdata
         })
       })
   }
