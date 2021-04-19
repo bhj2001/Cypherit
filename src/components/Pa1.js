@@ -103,7 +103,6 @@ class Pa1 extends React.Component {
         })
     };
     fetch("https://ragnar177.pythonanywhere.com/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
-      // console.log(data)
       this.setState({
         graphdata : data.graphdata
       })
