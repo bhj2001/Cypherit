@@ -62,10 +62,11 @@ class Pa0 extends React.Component {
           })
       };
       fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
-        this.setState({
-          plainText : data.cipher,
-          graphdata : data.graphdata
-        })
+        console.log(data)
+        // this.setState({
+        //   plainText : data.cipher,
+        //   graphdata : data.graphdata
+        // })
       })
   }
 
