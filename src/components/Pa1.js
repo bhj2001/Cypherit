@@ -17,6 +17,7 @@ class Pa1 extends React.Component {
       seed : 0,
       m1 : "Plain",
       m2 : "Cipher",
+      padding : 1,
 
     }
     this.handleDataApi = this.handleDataApi.bind(this)
@@ -27,9 +28,15 @@ class Pa1 extends React.Component {
     this.handleSeed = this.handleSeed.bind(this)
     this.changeMode = this.changeMode.bind(this)
     this.handleGraph = this.handleGraph.bind(this)
+    this.handlePadding = this.handlePadding.bind(this)
 
   }
 
+  handlePadding(event){
+    this.setState({
+      padding : (this.state.padding+1)%2
+    })
+  }
   changeMode(event){
     this.setState({
       mode : (this.state.mode+1)%2,
@@ -69,11 +76,12 @@ class Pa1 extends React.Component {
             key : this.state.key,
             blockSize : this.state.blockSize,
             mode : this.state.mode,
-            seed : this.state.seed
+            seed : this.state.seed,
+            padding : this.state.padding
 
         })
     };
-    fetch("https://ragnar177.pythonanywhere.com/des",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("http://127.0.0.1:8000/des",requestOptions).then(response=>response.json()).then(data =>{
       // console.log(data)
       if(this.state.mode){
         this.setState({
@@ -98,11 +106,12 @@ class Pa1 extends React.Component {
             key : this.state.key,
             blockSize : this.state.blockSize,
             mode : this.state.mode,
-            seed : this.state.seed
+            seed : this.state.seed,
+            padding : this.state.padding,
 
         })
     };
-    fetch("https://ragnar177.pythonanywhere.com/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("http://127.0.0.1:8000/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         graphdata : data.graphdata
       })
@@ -189,6 +198,13 @@ class Pa1 extends React.Component {
                 <svg onClick={this.changeMode} id="Layer_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m92.69 216c6.23 6.24 16.39 6.24 22.62 0l20.69-20.69c6.24-6.23 6.24-16.39 0-22.62l-20.69-20.69h284.69c26.47 0 48 21.53 48 48 0 13.23 10.77 24 24 24h16c13.23 0 24-10.77 24-24 0-61.76-50.24-112-112-112h-284.69l20.69-20.69c6.24-6.23 6.24-16.39 0-22.62l-20.69-20.69c-6.23-6.24-16.39-6.24-22.62 0l-90.35 90.34c-3.12 3.13-3.12 8.19 0 11.32z"/><path d="m419.31 296c-6.23-6.24-16.38-6.24-22.62 0l-20.69 20.69c-6.252 6.252-6.262 16.358 0 22.62l20.69 20.69h-284.69c-26.47 0-48-21.53-48-48 0-13.23-10.77-24-24-24h-16c-13.23 0-24 10.77-24 24 0 61.76 50.24 112 112 112h284.69l-20.69 20.69c-6.252 6.252-6.262 16.358 0 22.62l20.69 20.69c6.241 6.241 16.38 6.24 22.62 0l90.35-90.34c3.12-3.13 3.12-8.19 0-11.32z"/></g></svg>
               </div>
             </li>
+            <li className="input-item">
+              <div className="control-button">
+                <p className="input-box-heading text-button">Padding</p>
+                <input className="input-button example_b" id="clickMe"
+                  type="button" value={this.state.padding ? "Enabled" : "Disabled"} onClick={this.handlePadding} />
+              </div>
+            </li>
           </ul>
           <ul className="text-input-box">
 
@@ -213,13 +229,15 @@ class Pa1 extends React.Component {
               </div>
             </li>
             <li className="input-item">
-            <input className="input-button example_b" id="clickMe" type="button" value="Avalanche Effect" onClick={this.handleGraph} />
-            <GraphAppAvalanche  data = {{gdata : this.state.graphdata,height : 600, width : 900}}/>
+            <div>
+              <input className="input-button example_b slight-left" id="clickMe" type="button" value="Avalanche Effect" onClick={this.handleGraph} />
+              {console.log(window.innerWidth)}
+              <GraphAppAvalanche  data = {{gdata : this.state.graphdata,height : 600, width : window.innerWidth < 1000 ? 600 : 900}}/>
+            </div>
             </li>
           </ul>
 
         </div>
-
 
       </div>
     )
