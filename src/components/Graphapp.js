@@ -3,14 +3,6 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
-// export default class App extends PureComponent {
-//   constructor(props){
-//     super()
-//     console.log(props)
-//     this.state = {
-//       data : props.data
-//     }
-//   }
 
 function Graphapp(props){
     return (
