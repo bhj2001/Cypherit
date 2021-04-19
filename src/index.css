@@ -16,19 +16,25 @@ html {
   --text-light-color : #212529;
   --shadow-color : #adb5bd;
   --icon-color : #48bfe3;
+  --heading-color : var(--bg-color);
+  --dark-bg-text : #fffffc;
 }
 html[data-theme = "dark"]{
-  --bg-color : #161a1d;
+  --less-dark : #1a1f27;
+  --bg-color : #0d1117;
+  --more-dark : #080a0e;
   --border-color : #495057;
-  --matte-black : #495057;
+  --matte-black : var(--less-dark);
   --transition-speed: 600ms;
-  --button-color : #495057;
-  --icon-color : #ced4da;
-  --heading-bar : #495057;
-  --text-color : #495057;
-  --input-color : #495057;
-  --text-light-color : #fffffc;
-  --shadow-color : #495057;
+  --button-color : var(--less-dark);
+  --icon-color : #f0f6fc;
+  --heading-bar : var(--less-dark);
+  --text-color : #f0f6fc;
+  --input-color : var(--bg-color);
+  --text-light-color : #f0f6fc;
+  --shadow-color : var(--more-dark);
+  --heading-color : var(--icon-color);
+  --dark-bg-text : #f0f6fc;
 }
 body{
   margin:0;
@@ -111,6 +117,7 @@ a{
   margin-top : -10rem;
   font-weight : 600;
   text-transform: uppercase;
+  color : var(--heading-color);
 }
 .heading-bar{
   background: var(--heading-bar);
@@ -124,10 +131,12 @@ a{
   font-size: 1.2rem;
   padding : 0.3rem;
   padding-left : 1rem;
-  background: var(--border-color);
+  background: var(--heading-bar);
   border-radius: 10rem;
-  width: 60rem;
+  width: 20rem;
+  color : var(--dark-bg-text);
 }
+
 
 .input-box{
   display: inline-block;
