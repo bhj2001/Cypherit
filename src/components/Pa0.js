@@ -96,7 +96,7 @@ class Pa0 extends React.Component {
           </ul>
         </div>
         <div className = "graph-style">
-          <Graphapp  data = {this.state.graphdata}/>
+          <Graphapp  data = {{gdata : this.state.graphdata,height : 300, width : 500}}/>
         </div>
       </div>
     )

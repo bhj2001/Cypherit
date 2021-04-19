@@ -15,9 +15,9 @@ import {
 function Graphapp(props){
     return (
       <LineChart
-        width={500}
-        height={300}
-        data={props.data}
+        width={props.data.width}
+        height={props.data.height}
+        data={props.data.gdata}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
         }}
