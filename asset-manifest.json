@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Cypherit/static/css/main.7322e959.chunk.css",
-    "main.js": "/Cypherit/static/js/main.96ae758f.chunk.js",
-    "main.js.map": "/Cypherit/static/js/main.96ae758f.chunk.js.map",
+    "main.js": "/Cypherit/static/js/main.0b347490.chunk.js",
+    "main.js.map": "/Cypherit/static/js/main.0b347490.chunk.js.map",
     "runtime-main.js": "/Cypherit/static/js/runtime-main.fd89ebc3.js",
     "runtime-main.js.map": "/Cypherit/static/js/runtime-main.fd89ebc3.js.map",
     "static/js/2.ec332110.chunk.js": "/Cypherit/static/js/2.ec332110.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.fd89ebc3.js",
     "static/js/2.ec332110.chunk.js",
     "static/css/main.7322e959.chunk.css",
-    "static/js/main.96ae758f.chunk.js"
+    "static/js/main.0b347490.chunk.js"
   ]
 }
