@@ -1,10 +1,37 @@
 import react from 'react';
 import {Link} from 'react-router-dom'
+
+var theme = "light"
+function changeTheme(){
+  if(theme == "light"){
+    document.documentElement.setAttribute('data-theme','dark');
+    theme = "dark"
+  }
+  else {
+    document.documentElement.setAttribute('data-theme','light');
+    theme = "light"
+  }
+
+}
 function Navbar()
 {
   return (
     <nav className = "navbar">
       <ul className = "navbar-nav">
+      <li onClick = {changeTheme} className="nav-link">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        	 width="578.405px" height="578.405px" viewBox="0 0 578.405 578.405" xml="preserve">
+        <g>
+        	<g>
+        		<path d="M289.203,0C129.736,0,0,129.736,0,289.203C0,448.67,129.736,578.405,289.203,578.405
+        			c159.467,0,289.202-129.735,289.202-289.202C578.405,129.736,448.67,0,289.203,0z M28.56,289.202
+        			C28.56,145.48,145.481,28.56,289.203,28.56l0,0v521.286l0,0C145.485,549.846,28.56,432.925,28.56,289.202z"/>
+        	</g>
+        </g>
+
+        </svg>
+      </li>
+
       <Link to='/practical-assignment-0' style={{ textDecoration: 'none' }}>
         <li className="nav-link">
           <p className = "font-icon"> PA0 </p>

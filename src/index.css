@@ -2,20 +2,33 @@
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  --text-white : #ffffff;
-  --text-primary : #343a40;
-  --text-glow : #00b4d8;
-  --nav-bg-color : #fffffc;
+
+}
+html {
   --bg-color : #fffffc;
-  --bg-light-color : #fffffc;
-  /* --bg-light-color : #e9ecef; */
-  --bg-dark-color : #f8f9fa;
   --border-color : #ced4da;
-  --matte-black : #161a1d;
+  --matte-black : #212529;
   --transition-speed: 600ms;
   --button-color : #48bfe3;
-
   --heading-bar : #161a1d;
+  --text-color : #212529;
+  --input-color : #fffffc;
+  --text-light-color : #212529;
+  --shadow-color : #adb5bd;
+  --icon-color : #48bfe3;
+}
+html[data-theme = "dark"]{
+  --bg-color : #161a1d;
+  --border-color : #495057;
+  --matte-black : #495057;
+  --transition-speed: 600ms;
+  --button-color : #495057;
+  --icon-color : #ced4da;
+  --heading-bar : #495057;
+  --text-color : #495057;
+  --input-color : #495057;
+  --text-light-color : #fffffc;
+  --shadow-color : #495057;
 }
 body{
   margin:0;
@@ -66,9 +79,10 @@ a{
   border-width: 0px;
   outline : none;
   resize : none;
-  background: #fffffc;
-  box-shadow: inset 5px 5px 15px #d4d4d4,inset -5px -5px 15px #ffffff;
+  background: var(--input-color);
+  box-shadow: inset 5px 5px 15px var(--shadow-color),inset -5px -5px 15px var(--bg-color);
   padding : 1rem;
+  color : var(--text-light-color)
 }
 .inputBox:hover {
     border-width: 0.2rem;
@@ -103,7 +117,7 @@ a{
   border-radius: 3rem;
   width: 89rem;
   align-items: center;
-  color : #ffffff;
+  color : var(--bg-color);
 }
 
 .box-heading{
@@ -124,10 +138,12 @@ a{
   border-width: 0px;
   outline : none;
   resize : none;
-  background: #fffffc;
-  box-shadow: inset 5px 5px 15px #d4d4d4,inset -5px -5px 15px #ffffff;
+  background: var(--input-color);
+
+  box-shadow: inset 5px 5px 15px var(--shadow-color),inset -5px -5px 15px var(--bg-color);
   padding : 0.3 rem;
   padding-left :1rem;
+  color : var(--text-light-color);
 }
 
 .value-box{
@@ -139,11 +155,12 @@ a{
   border-width: 0px;
   outline : none;
   resize : none;
-  background: #fffffc;
-  box-shadow: inset 5px 5px 15px #d4d4d4,inset -5px -5px 15px #ffffff;
+  background: var(--input-color);
+  box-shadow: inset 5px 5px 15px var(--shadow-color),inset -5px -5px 15px var(--bg-color);
   padding : 0.3 rem;
   padding-left :1rem;
   padding-right: 1rem;
+  color : var(--text-light-color);
 }
 
 .example_b {
@@ -181,21 +198,21 @@ a{
   align-items: center;
   text-decoration: none;
   color: var(--bg-color);
+  margin-bottom: 1.5rem;
 }
 .navbar-nav{
-  margin-top:12rem
+  margin-top:10rem
 }
 
 .nav-link svg{
   width:1.7rem;
   min-width: 1.7rem;
   height : 1.7rem;
-  margin-top : 2rem;
   fill: var(--bg-color);
 }
 
 .nav-link svg:hover{
-    fill : var(--button-color)
+    fill : var(--icon-color)
 }
 
 .controls{
@@ -215,7 +232,7 @@ a{
 }
 
 .font-icon:hover{
-  color: var(--button-color);
+  color: var(--icon-color);
 }
 .text-input-box{
   list-style: none;
@@ -228,7 +245,7 @@ a{
 
 .input-box-heading{
   font-size: 1.2rem;
-  color : var(--matte-block);
+  color : var(--text-color);
   font-weight: 500;
 }
 
