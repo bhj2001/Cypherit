@@ -57,7 +57,8 @@ class Pa0 extends React.Component {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-              plainText:this.state.cipher
+              plainText:this.state.cipher,
+              graphdata : data.graphdata
           })
       };
       fetch("https://ragnar177.pythonanywhere.com/pa0",requestOptions).then(response=>response.json()).then(data =>{
