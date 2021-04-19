@@ -17,7 +17,7 @@ ReactDOM.render(
       <div>
         <Navbar/>
           <Switch>
-            <Route path="/" exact component={Home}/>
+            <Route path="/Cypherit" exact component={Home}/>
             <Route path="/encrypt-image" exact component={ImageEncrypt}/>
             <Route path="/encrypt-image-operation" exact component={ImageOp}/>
             <Route path="/key-generator" exact component={KeyGenerator}/>
