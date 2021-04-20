@@ -107,7 +107,7 @@ class Pa1 extends React.Component {
             blockSize : this.state.blockSize,
             mode : this.state.mode,
             seed : this.state.seed,
-            padding : this.state.padding,
+            padding : this.state.padding
 
         })
     };
