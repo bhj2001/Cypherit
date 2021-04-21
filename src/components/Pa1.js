@@ -29,40 +29,126 @@ class Pa1 extends React.Component {
     this.changeMode = this.changeMode.bind(this)
     this.handleGraph = this.handleGraph.bind(this)
     this.handlePadding = this.handlePadding.bind(this)
-
+    this.isValid = this.isValid.bind(this)
   }
 
+  isValid()
+  {
+    if((this.state.blockSize != 16 && this.state.blockSize !=32 && this.state.blockSize !=64) )
+    {
+      // alert("Block Size should be in [16,32,64]")
+      return 0
+    }
+    if(this.state.rounds<1 || this.state.rounds>16)
+    {
+      // alert("Rounds should be between 1 and 16")
+      return 0
+    }
+
+    if(this.state.key.length < this.state.blockSize/8)
+    {
+      if(this.state.mode==1)
+      {
+        this.setState({
+          cipher : "Error : Key Length must be of length " + this.state.blockSize/8
+        })
+      }
+      else{
+        this.setState({
+          plainText : "Error : Key Length must be of length " + this.state.blockSize/8
+        })
+      }
+      return 0
+    }
+    // else{
+    //   this.setState({
+    //     cipher : ""
+    //   })
+    // }
+
+    if(this.state.plainText.length==0 && this.state.mode == 1)
+    {
+      this.setState({
+        cipher : ""
+      })
+      return 0;
+    }
+    if(this.state.cipher.length==0 && this.state.mode == 0 )
+    {
+      this.setState({
+        plainText : ""
+      })
+      return 0
+    }
+    var tmp = this.state.blockSize/8
+    if(this.state.mode==1 && this.state.plainText.length%tmp !=0 && this.state.padding==0)
+    {
+      this.setState({
+        cipher : "Either make the text length a multiple of "+tmp +" or enable the padding "
+      })
+      return 0;
+      // alert("Either make the text length a multiple of "+tmp +" or enable the padding ")
+    }
+    return 1
+  }
+
+  handleUpdate()
+  {
+    if(!this.isValid())
+      return
+    if(this.state.mode == 1)
+    {
+      this.handleDataApi(this.state.plainText)
+    }
+    else {
+      this.handleDataApi(this.state.cipher)
+    }
+  }
   handlePadding(event){
     this.setState({
       padding : (this.state.padding+1)%2
-    })
+    },() => this.handleUpdate())
   }
   changeMode(event){
     this.setState({
       mode : (this.state.mode+1)%2,
       m1 : this.state.m1 == "Plain" ? "Cipher" : "Plain",
-      m2 : this.state.m2 == "Plain" ? "Cipher" : "Plain"
+      m2 : this.state.m2 == "Plain" ? "Cipher" : "Plain",
+      plainText : "",
+      cipher : ""
     })
   }
   handleSeed(event){
     this.setState({
       seed : event.target.value
+    },()=>{
+      this.handleUpdate();
+
     })
   }
 
   handleKey(event){
     this.setState({
       key : event.target.value
+    },()=>{
+      this.handleUpdate();
+
     })
   }
   handleRound(event){
     this.setState({
       rounds : event.target.value
+    },()=>{
+      this.handleUpdate();
+
     })
   }
   handleBlockSize(event){
     this.setState({
       blockSize : event.target.value
+    },()=>{
+      this.handleUpdate();
+
     })
   }
 
@@ -97,11 +183,27 @@ class Pa1 extends React.Component {
   }
 
   handleGraph(){
+    if(this.state.mode == 0 )
+    {
+      alert("Press Swap.")
+      return 0
+    }
+    if(this.state.plainText.length == 0)
+    {
+      alert("Enter a plain-text.")
+      return 0
+    }
+    if(this.state.key.length < 8)
+    {
+      alert("For Avalanche effect please enter a key of atleast 8 characters.")
+      return
+    }
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            txt: this.state.mode ? this.state.plainText : this.state.cipher,
+            // txt: this.state.mode ? this.state.plainText : this.state.cipher,
+            txt :this.state.plainText,
             rounds : this.state.rounds,
             key : this.state.key,
             blockSize : this.state.blockSize,
@@ -122,15 +224,16 @@ class Pa1 extends React.Component {
     if(this.state.mode){
       this.setState({
         plainText : event.target.value
-      },() => {
-        this.handleDataApi(event.target.value)
+      },()=>{
+        this.handleUpdate();
       })
     }
     else {
       this.setState({
         cipher : event.target.value
-      },() => {
-        this.handleDataApi(event.target.value)
+      },()=>{
+        this.handleUpdate();
+
       })
     }
 
