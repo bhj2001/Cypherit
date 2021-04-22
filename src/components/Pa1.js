@@ -168,7 +168,6 @@ class Pa1 extends React.Component {
         })
     };
     fetch("https://ragnar177.pythonanywhere.com/des",requestOptions).then(response=>response.json()).then(data =>{
-      // console.log(data)
       if(this.state.mode){
         this.setState({
           cipher : data.txt
@@ -213,7 +212,7 @@ class Pa1 extends React.Component {
 
         })
     };
-    fetch("https://ragnar177.pythonanywhere.com/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("http://127.0.0.1:8000/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         graphdata : data.graphdata
       })
@@ -334,7 +333,6 @@ class Pa1 extends React.Component {
             <li className="input-item">
             <div>
               <input className="input-button example_b slight-left" id="clickMe" type="button" value="Avalanche Effect" onClick={this.handleGraph} />
-              {console.log(window.innerWidth)}
               <GraphAppAvalanche  data = {{gdata : this.state.graphdata,height : 600, width : window.innerWidth < 1000 ? 600 : 900}}/>
             </div>
             </li>
