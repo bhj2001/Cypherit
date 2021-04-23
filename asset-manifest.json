@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Cypherit/static/css/main.1eb0c852.chunk.css",
+    "main.css": "/Cypherit/static/css/main.702f93c9.chunk.css",
     "main.js": "/Cypherit/static/js/main.2802b4ff.chunk.js",
     "main.js.map": "/Cypherit/static/js/main.2802b4ff.chunk.js.map",
     "runtime-main.js": "/Cypherit/static/js/runtime-main.fd89ebc3.js",
@@ -8,13 +8,13 @@
     "static/js/2.dc7b583b.chunk.js": "/Cypherit/static/js/2.dc7b583b.chunk.js",
     "static/js/2.dc7b583b.chunk.js.map": "/Cypherit/static/js/2.dc7b583b.chunk.js.map",
     "index.html": "/Cypherit/index.html",
-    "static/css/main.1eb0c852.chunk.css.map": "/Cypherit/static/css/main.1eb0c852.chunk.css.map",
+    "static/css/main.702f93c9.chunk.css.map": "/Cypherit/static/css/main.702f93c9.chunk.css.map",
     "static/js/2.dc7b583b.chunk.js.LICENSE.txt": "/Cypherit/static/js/2.dc7b583b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fd89ebc3.js",
     "static/js/2.dc7b583b.chunk.js",
-    "static/css/main.1eb0c852.chunk.css",
+    "static/css/main.702f93c9.chunk.css",
     "static/js/main.2802b4ff.chunk.js"
   ]
 }
