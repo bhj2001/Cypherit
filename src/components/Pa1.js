@@ -18,6 +18,8 @@ class Pa1 extends React.Component {
       m1 : "Plain",
       m2 : "Cipher",
       padding : 1,
+      plainTextType : "ASCII",
+      cipherTextType : "HEX"
 
     }
     this.handleDataApi = this.handleDataApi.bind(this)
@@ -30,6 +32,8 @@ class Pa1 extends React.Component {
     this.handleGraph = this.handleGraph.bind(this)
     this.handlePadding = this.handlePadding.bind(this)
     this.isValid = this.isValid.bind(this)
+    this.handlePlainTextType = this.handlePlainTextType.bind(this)
+    this.handleCipherTextType = this.handleCipherTextType.bind(this)
   }
 
   isValid()
@@ -60,11 +64,7 @@ class Pa1 extends React.Component {
       }
       return 0
     }
-    // else{
-    //   this.setState({
-    //     cipher : ""
-    //   })
-    // }
+
 
     if(this.state.plainText.length==0 && this.state.mode == 1)
     {
@@ -151,7 +151,20 @@ class Pa1 extends React.Component {
 
     })
   }
-
+  handlePlainTextType(event){
+    this.setState({
+      plainTextType : event.target.value
+    },()=>{
+      this.handleUpdate();
+    })
+  }
+  handleCipherTextType(event){
+    this.setState({
+      cipherTextType : event.target.value
+    },()=>{
+      this.handleUpdate();
+    })
+  }
   handleDataApi(tmptxt){
     const requestOptions = {
         method: 'POST',
@@ -163,11 +176,13 @@ class Pa1 extends React.Component {
             blockSize : this.state.blockSize,
             mode : this.state.mode,
             seed : this.state.seed,
-            padding : this.state.padding
+            padding : this.state.padding,
+            plainTextType : this.state.plainTextType,
+            cipherTextType : this.state.cipherTextType
 
         })
     };
-    fetch("https://ragnar177.pythonanywhere.com/des",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("http://127.0.0.1:8000/des",requestOptions).then(response=>response.json()).then(data =>{
       if(this.state.mode){
         this.setState({
           cipher : data.txt
@@ -212,7 +227,7 @@ class Pa1 extends React.Component {
 
         })
     };
-    fetch("https://ragnar177.pythonanywhere.com/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("http://127.0.0.1:8000/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         graphdata : data.graphdata
       })
@@ -237,10 +252,6 @@ class Pa1 extends React.Component {
     }
 
   }
-
-
-
-
 
   componentDidMount(){
   }
@@ -312,7 +323,28 @@ class Pa1 extends React.Component {
 
             <li className="input-item">
               <div>
-                <p className="input-box-heading">{this.state.m1} Text</p>
+                <ul className="input-type">
+                  <li className="input-type-item">
+                    <p className="input-box-heading">{this.state.m1} Text</p>
+                  </li>
+                  <li className="input-type-item">
+                  { this.state.mode ?
+                    (<div >
+                      <select className="select-css" value={this.state.plainTextType} onChange={this.handlePlainTextType}>
+                       <option value="ASCII">ASCII</option>
+                        <option value="HEX">HEX</option>
+                      </select>
+                    </div>)
+                    :
+                    (<div >
+                      <select className="select-css" value={this.state.cipherTextType} onChange={this.handleCipherTextType}>
+                       <option value="ASCII">ASCII</option>
+                        <option value="HEX">HEX</option>
+                      </select>
+                    </div>)
+                  }
+                  </li>
+                </ul>
                 { this.state.mode ?
                 (<textarea className = "inputBox" value = {this.state.plainText} type = "text" placeholder = "Plain Text" onChange={this.handleChange}/>)
                 :
@@ -322,7 +354,28 @@ class Pa1 extends React.Component {
             </li>
             <li className="input-item">
               <div style={{display:'inline-block'}}>
-                <p className="input-box-heading">{this.state.m2} Text</p>
+                <ul className="input-type">
+                  <li className="input-type-item">
+                    <p className="input-box-heading">{this.state.m2} Text</p>
+                  </li>
+                  <li className="input-type-item">
+                  { !this.state.mode ?
+                    (<div >
+                      <select className="select-css" value={this.state.plainTextType} onChange={this.handlePlainTextType}>
+                       <option value="ASCII">ASCII</option>
+                        <option value="HEX">HEX</option>
+                      </select>
+                    </div>)
+                    :
+                    (<div >
+                      <select className="select-css" value={this.state.cipherTextType} onChange={this.handleCipherTextType}>
+                       <option value="ASCII">ASCII</option>
+                        <option value="HEX">HEX</option>
+                      </select>
+                    </div>)
+                  }
+                  </li>
+                </ul>
                 { this.state.mode ?
                   (<textarea className = "inputBox" value = {this.state.cipher} type = "text" placeholder = "Cipher Text" readonly />)
                   :

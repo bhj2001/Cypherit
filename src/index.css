@@ -276,6 +276,7 @@ a{
 }
 .text-input-box{
   list-style: none;
+
 }
 
 .input-item{
@@ -435,4 +436,16 @@ a{
 
 .text-button:hover{
   color : var(--icon-color);
+}
+
+.input-type{
+  list-style: none;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+}
+
+.input-type-item{
+  display: inline-block;
+  margin-right: 2rem;
 }
