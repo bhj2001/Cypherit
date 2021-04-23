@@ -182,7 +182,7 @@ class Pa1 extends React.Component {
 
         })
     };
-    fetch("http://127.0.0.1:8000/des",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("https://ragnar177.pythonanywhere.com/des",requestOptions).then(response=>response.json()).then(data =>{
       if(this.state.mode){
         this.setState({
           cipher : data.txt
@@ -227,7 +227,7 @@ class Pa1 extends React.Component {
 
         })
     };
-    fetch("http://127.0.0.1:8000/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
+    fetch("https://ragnar177.pythonanywhere.com/des-avalanche",requestOptions).then(response=>response.json()).then(data =>{
       this.setState({
         graphdata : data.graphdata
       })
